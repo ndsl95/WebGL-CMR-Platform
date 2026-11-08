@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>模型工厂 · 渲染实验室</title><link rel="icon" href="data:,"><link rel="stylesheet" href="css/gallery.css"><script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script></head>
+<body><canvas id="renderer"></canvas><header><div><span class="eyebrow">SCADA / ASSET LAB</span><h1>模型工厂 · 渲染实验室</h1><p>仓库原有模型与特效逐格展示。拖动旋转 · 滚轮缩放 · 点击放大</p></div><div><a href="editor.html">导入 / 编辑模型 ↗</a>　<a href="index.html">工艺演示 ↗</a></div></header>
+<aside id="settings"><div class="panel-title">公共渲染设置 <button id="reset">重置</button></div><p class="hint">对全部格子同时生效</p>
+<label>画面背景<select id="theme"><option value="light">浅色工作台</option><option value="dark">深色工作台</option></select></label>
+<label>环境光 <output></output><input id="ambient" type="range" min="0" max="4" step="0.05" value="1.5"></label>
+<label>主光强度 <output></output><input id="sun" type="range" min="0" max="8" step="0.1" value="3"></label>
+<label>主光颜色<input id="lightColor" type="color" value="#fff4e5"></label>
+<label>光照方位 <output></output><input id="azimuth" type="range" min="0" max="360" step="1" value="315"></label>
+<label>光照高度 <output></output><input id="elevation" type="range" min="5" max="85" step="1" value="50"></label>
+<label>曝光 <output></output><input id="exposure" type="range" min="0.2" max="2.5" step="0.05" value="1"></label>
+<label>色调映射<select id="tone"><option value="aces">ACES 电影映射</option><option value="neutral">Neutral 中性映射</option><option value="linear">Linear 线性映射</option></select></label>
+<label>环境反射 <output></output><input id="environment" type="range" min="0" max="2" step="0.05" value="0.5"></label>
+<label class="check"><input id="shadows" type="checkbox" checked>模型投影</label>
+<label>阴影柔和度 <output></output><input id="softness" type="range" min="0" max="8" step="0.2" value="3"></label>
+<label class="check"><input id="ao" type="checkbox">环境光遮蔽 AO</label>
+<label>AO 强度 <output></output><input id="aoStrength" type="range" min="0" max="2" step="0.1" value="1"></label>
+<label class="check"><input id="bloom" type="checkbox" checked>辉光后期</label>
+<label>辉光强度 <output></output><input id="bloomStrength" type="range" min="0" max="2" step="0.05" value="0.35"></label>
+<label class="check"><input id="effects" type="checkbox" checked>水面 / 流动 / 展示特效</label>
+<label>动画速度 <output></output><input id="speed" type="range" min="0" max="3" step="0.1" value="1"></label>
+<label class="check"><input id="rotate" type="checkbox">自动旋转模型</label>
+<label class="check"><input id="wireframe" type="checkbox">网格线框</label>
+<div class="presets"><button data-preset="day">日间</button><button data-preset="night">夜间辉光</button><button data-preset="side">侧光阴影</button></div><p class="hint">这是新增的查看工具；模型和特效调用原仓库代码。模型按各自包围盒适配，格子间比例不相同。</p><div id="status">初始化…</div></aside>
+<main><nav><button class="active" data-filter="all">全部</button><button data-filter="model">设备模型</button><button data-filter="part">基础部件</button><button data-filter="fx">水面与特效</button><button data-filter="custom">我的模型</button><span id="count"></span></nav><div id="grid"></div></main><div id="modal" hidden><button id="close">关闭 × / Esc</button><div id="expanded"></div></div><script type="module" src="js/gallery.js"></script></body></html>

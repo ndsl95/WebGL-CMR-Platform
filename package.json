@@ -1,0 +1,12 @@
+{
+  "name": "webgl-cmr-platform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Browser-based SCADA model gallery, rendering lab and local GLB/FBX model editor",
+  "license": "AGPL-3.0-only",
+  "scripts": {
+    "start": "python serve.py 8080",
+    "test": "node doc/check-gallery.cjs && node doc/check-editor.cjs"
+  },
+  "dependencies": { "three": "0.170.0", "html-to-image": "^1.11.11", "playwright": "^1.48.0" }
+}

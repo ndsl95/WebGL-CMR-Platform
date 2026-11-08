@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>示例组态 · 工艺流程</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/app.css">
+<script type="importmap">
+{ "imports": { "three": "./node_modules/three/build/three.module.js", "three/addons/": "./node_modules/three/examples/jsm/" } }
+</script>
+</head>
+<body>
+<div id="viewport">
+<div id="stage">
+  <canvas id="gl"></canvas>
+  <div id="labels"></div>
+
+  <header id="header">
+    <div class="hd-left">
+      <div class="brand"><div class="brand-txt"><b>ZUTAI<span>LAB</span></b><em>组态工坊</em></div></div>
+      <span class="hd-sep"></span>
+      <div class="plc-group">
+        <div class="plc" id="plc1"><b>PLC</b><i class="dot"></i><span>通信失败</span></div>
+        <div class="plc cpu"><b>CPU</b><span class="cpu-bar"><i></i></span></div>
+      </div>
+    </div>
+    <div class="hd-title"><div class="title-plate"><h1>示例工艺监控</h1></div></div>
+    <div class="hd-right"><span class="hd-time" id="clock-text">2026/01/01&nbsp;&nbsp;00:00:00</span><span class="hd-user">admin</span></div>
+  </header>
+
+  <nav id="nav">
+    <a class="active">工艺流程</a><a>历史曲线</a><a>报警查询</a><a>参数设置</a>
+    <div class="nav-tools">
+      <label class="switch"><input type="checkbox" id="demo-toggle"><i></i><span>演示数据</span></label>
+      <button id="btn-fault" class="tool-btn">模拟异常</button>
+      <button id="btn-reset-fault" class="tool-btn">故障复位</button>
+      <button id="btn-reset" class="tool-btn">复位视角</button>
+      <button id="btn-fullscreen" class="tool-btn" title="全屏：只显示模型场景 (F)"><svg viewBox="0 0 24 24"><path d="M4 9V4h5 M20 9V4h-5 M4 15v5h5 M20 15v5h-5"/></svg><span>全屏</span></button>
+      <button id="btn-export" class="tool-btn primary">导出PNG</button>
+    </div>
+  </nav>
+
+  <section id="legend" class="glass">
+    <span class="lg-title">管线图例</span>
+    <span><i style="--c:#58bde6"></i>废水</span><span><i style="--c:#5cc28c"></i>加药</span><span><i style="--c:#c98a3c"></i>污泥</span>
+  </section>
+
+  <section id="param-card" class="glass">
+    <div class="card-hd"><span class="hd-ico"><svg viewBox="0 0 24 24"><path d="M4 18a8 8 0 1 1 16 0 M12 18l4-6"/></svg></span>运行参数
+      <button class="fold" id="fold" title="收起 / 展开"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button></div>
+    <table class="ptable" id="ptable"><tbody id="prows"></tbody></table>
+  </section>
+
+  <section id="views" class="glass"><span class="lg-title">视角</span>
+    <button data-v="all" class="on">全景</button><button data-v="pump">泵区</button><button data-v="react">反应罐</button></section>
+
+  <footer id="footer">
+    <section class="panel glass alarm">
+      <div class="card-hd"><span class="hd-ico red"><svg viewBox="0 0 24 24"><path d="M12 3l9 17H3z M12 10v4 M12 17v.5"/></svg></span>报警信息 <span class="badge" id="alarm-count">0</span></div>
+      <table class="atable"><thead><tr><th style="width:110px">日期</th><th style="width:100px">时间</th><th>消息文本</th><th style="width:96px">确认状态</th><th style="width:70px">状态</th></tr></thead>
+        <tbody id="alarm-rows"><tr><td colspan="5" class="empty">暂无报警信息</td></tr></tbody></table>
+      <div class="statusbar"><span class="sb-warn"><i class="dot"></i><span>所有服务器连接失败。</span></span><span id="sb-time"></span></div>
+    </section>
+  </footer>
+
+  <button id="fs-exit"><svg viewBox="0 0 24 24"><path d="M9 4v5H4 M15 4v5h5 M9 20v-5H4 M15 20v-5h5"/></svg>退出全屏</button>
+  <div id="tooltip"></div>
+  <div id="toast"></div>
+</div>
+</div>
+<script src="node_modules/html-to-image/dist/html-to-image.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

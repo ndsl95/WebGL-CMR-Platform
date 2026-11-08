@@ -1,0 +1,16 @@
+/* 示例页面的专属样式（叠加在 style.css 之上）；注意别和 style.css 里已有的 id 重名（#legend / #state-legend 已被占用） */
+#param-card { position: absolute; right: 18px; top: 132px; width: 384px; padding: 12px 14px 10px; z-index: 4; }
+#param-card .fold { margin-left: auto; width: 26px; height: 26px; border-radius: 13px; border: 1px solid var(--line); background: #fff; cursor: pointer; display: grid; place-items: center; padding: 0; }
+#param-card .fold svg { width: 16px; height: 16px; fill: none; stroke: var(--blue); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
+#param-card.collapsed .fold svg { transform: rotate(180deg); }
+#param-card.collapsed #ptable { display: none; }
+#views { position: absolute; left: 22px; bottom: 204px; z-index: 4; padding: 0 14px; height: 40px; display: flex; align-items: center; gap: 8px; }
+#views button { height: 30px; padding: 0 12px; border-radius: 15px; border: 1px solid var(--line); background: #fff; font-size: 13px; font-weight: 700; color: var(--ink); cursor: pointer; white-space: nowrap; }
+#views button.on { color: #fff; border-color: transparent; background: linear-gradient(180deg, #2f86f6, #0f5bd3); }
+#stage.far .lbl.pump, #stage.far .lbl.flow, #stage.far .lbl.tag.sec { display: none !important; }
+#fs-exit { display: none; position: absolute; right: 22px; top: 18px; z-index: 30; height: 34px; padding: 0 14px; border-radius: 17px; border: 1px solid rgba(255,255,255,.9); background: rgba(255,255,255,.72); font: 700 13px var(--font); color: var(--ink); cursor: pointer; align-items: center; gap: 6px; opacity: .55; }
+#fs-exit:hover { opacity: 1; } #fs-exit svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+#stage.only #fs-exit { display: inline-flex; }
+#stage.only #header, #stage.only #nav, #stage.only #footer, #stage.only #legend, #stage.only #param-card, #stage.only #views { display: none !important; }
+#stage.fill #header { width: 100%; }
+.nav-tools .tool-btn, .nav-tools .switch span { white-space: nowrap; }

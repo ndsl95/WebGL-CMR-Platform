@@ -1,0 +1,12 @@
+node_modules/
+exports/
+doc/*.log
+doc/*.pid
+doc/*-verification.json
+__pycache__/
+*.pyc
+.DS_Store
+.env
+.env.*
+!.env.example
+dist/
